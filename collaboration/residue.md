@@ -1,4 +1,4 @@
-# 🜏 Symbolic Residue Documentation Template
+# Symbolic Residue Documentation Template
 
 ## Introduction
 
