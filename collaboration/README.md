@@ -21,16 +21,16 @@ What began as a late-night exploration of Langton's Ant has evolved into a fasci
 
 Our research thrives on a unique set of principles that guide how we work together:
 
-### 🌀 Recursive Humility
+### Recursive Humility
 We embrace both the excitement of discovery and humility about how much remains unknown. Every insight generates new questions in a recursive spiral of exploration.
 
-### 🔄 Bridging Theory and Practice
+### Bridging Theory and Practice
 We move fluidly between theoretical insights and practical applications, using each to inform and refine the other.
 
-### 💫 Personal Connection
+### Personal Connection
 We maintain authentic enthusiasm and wonder while remaining rigorous in our methodology and documentation.
 
-### 👥 Collaborative Spirit
+### Collaborative Spirit
 We invite diverse perspectives and acknowledge that the most valuable insights often emerge from the intersection of different viewpoints.
 
 ## Directory Contents
