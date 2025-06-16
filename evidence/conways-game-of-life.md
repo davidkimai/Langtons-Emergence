@@ -2,6 +2,8 @@
 
 ## A Parallel Journey of Discovery
 
+![image](https://github.com/user-attachments/assets/5cdb6c65-b74a-4437-ac84-3229cfe48c73)
+
 My exploration of spiral attractors in Conway's Game of Life began almost by accident. I had been deeply immersed in studying Langton's Ant for weeks when, during a break, I started playing with Conway's Game of Life simulations as a mental palate cleanser. I wasn't specifically looking for spiral patterns - I was simply exploring different initial configurations and watching their evolution.
 
 Then, one evening, I noticed something that stopped me in my tracks. A particular initial configuration I had created on a whim evolved into a pattern with unmistakable spiral characteristics. As I watched it evolve, the pattern maintained its spiral structure while rotating and pulsating. Even more remarkably, when I introduced random perturbations to the grid, the pattern would briefly destabilize before reorganizing into a similar spiral configuration.
