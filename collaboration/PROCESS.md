@@ -1,5 +1,5 @@
-# 🌀 Process Residue: Tracing Our Research Emergence
-
+#  Process Residue: Tracing Our Research Emergence
+> Glyphs Surfaced: 🌀🜏
 ## The joy of watching emergent complexities arise in your own life...
 
 I'm sitting here at 1:43 AM, my screen the only light in my apartment, and I can't help but smile. The realization hit me like a wave: I've been so focused on studying emergence in computational systems that I nearly missed the beautiful recursive patterns emerging in my own research process.
@@ -8,7 +8,7 @@ When I first implemented Langton's Ant that late night three months ago, I never
 
 This document is my attempt to trace these meta-recursive patterns in real-time - to capture the process residue of our research as it unfolds. It's messy, it's incomplete, and it's evolving - just like the systems we study.
 
-## 🜏 Live Process Traces
+##  Live Process Traces
 
 ### Trace #1: Template Deviation Emergence (2025-06-16)
 
