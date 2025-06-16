@@ -51,7 +51,7 @@ I'm particularly interested in:
 
 ## A Note on Symbolic Residue
 
-Throughout this research, I've found that paying attention to what I call "symbolic residue" - the unexpected patterns or behaviors that don't fit neatly into existing explanations - often leads to the most interesting insights. Each evidence directory contains a `residue.md` file documenting these unexpected findings, as they often point toward future research directions.
+Throughout this research, I've found that paying attention to what I call "symbolic residue" - the unexpected patterns or behaviors that don't fit neatly into existing explanations - often leads to the most interesting insights. Each directory contains a `residue.md` file documenting these unexpected findings, as they often point toward future research directions.
 
 As Chris Olah's work on neural network interpretability has shown, sometimes the most significant discoveries come from carefully examining what doesn't fit our current understanding rather than what does.
 
