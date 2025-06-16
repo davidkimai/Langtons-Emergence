@@ -1,6 +1,6 @@
 # Langton's Emergence: A Personal Journey Through the Primitives of Emergent Complexity
 
-Recently I have been researching emergent complexities through the primitives of Langton's Ant in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
+Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
 
 ## The Spark: Why Langton's Ant Captured My Imagination
 
