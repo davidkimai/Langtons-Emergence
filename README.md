@@ -88,7 +88,7 @@ While experimenting with perturbations to the system, I noticed something remark
 
 ![image](https://github.com/user-attachments/assets/d956e77a-0e22-42a4-926f-dd85ae54ab7a)
 
-> "A spiral, weirdly resilient to traps, toggling tiles in the path of the ant has minor effects, but I have not been able to shake it off the spiral path, which is bizarre."
+> "A spiral, weirdly resilient to traps, toggling tiles in the path of the ant has minor effects, but I have not been able to shake it off the spiral path, which is bizarre.——[Dave Kerr](https://github.com/dwmkerr)"
 
 This resilience fascinated me. How could such a simple system demonstrate this kind of robustness to perturbation? And why specifically a spiral pattern?
 
