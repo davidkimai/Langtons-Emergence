@@ -167,7 +167,7 @@ If there's one thing I've learned from watching that virtual ant trace its unpre
 
 4. Mitchell, M. (2009). *Complexity: A Guided Tour*. Oxford University Press.
 
-5. Anthropic. (2023). Discovering Latent Knowledge in Language Models Without Supervision. https://www.anthropic.com/research/discovering-latent-knowledge
+5. Burns, C., et al. (2023). Discovering Latent Knowledge in Language Models Without Supervision. https://www.anthropic.com/research/discovering-latent-knowledge
 
 6. Clark, A. (2008). *Supersizing the Mind: Embodiment, Action, and Cognitive Extension*. Oxford University Press.
 
