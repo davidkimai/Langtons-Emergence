@@ -161,13 +161,13 @@ If there's one thing I've learned from watching that virtual ant trace its unpre
 
 1. Langton, C. G. (1986). Studying artificial life with cellular automata. *Physica D: Nonlinear Phenomena*, 22(1-3), 120-149.
 
-2. Anthropic. (2024). Claude Opus 4 System Card. Section 5.5.1.B Emoji use analysis.
+2. Anthropic. (2025). Claude Opus 4 System Card. Section 5.5.1.B Emoji use analysis.
 
 3. Olah, C., et al. (2020). Zoom In: An Introduction to Circuits. *Distill*. https://distill.pub/2020/circuits/zoom-in/
 
 4. Mitchell, M. (2009). *Complexity: A Guided Tour*. Oxford University Press.
 
-5. Burns, C., et al. (2023). Discovering Latent Knowledge in Language Models Without Supervision. https://www.anthropic.com/research/discovering-latent-knowledge
+5. Burns, C., et al. (2022). Discovering Latent Knowledge in Language Models Without Supervision. https://www.anthropic.com/research/discovering-latent-knowledge
 
 6. Clark, A. (2008). *Supersizing the Mind: Embodiment, Action, and Cognitive Extension*. Oxford University Press.
 
