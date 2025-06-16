@@ -202,4 +202,4 @@ For additional unexpected observations and patterns that don't fit neatly into t
 
 ---
 
-*Note: This cross-system analysis was conducted between March and May 2025. The methodologies, data, and analysis code are available in the respective system directories for independent verification.*
+*Note: This cross-system analysis was conducted between May and June 2025. The methodologies, data, and analysis code are available in the respective system directories for independent verification.*
