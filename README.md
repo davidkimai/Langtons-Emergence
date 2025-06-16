@@ -84,7 +84,9 @@ This phase transition is what convinced me that Langton's Ant might offer insigh
 
 The most extraordinary property I've observed in Langton's Ant – and the one that most directly connects to my research on language models – is what I've come to call "the resilient spiral."
 
-While experimenting with perturbations to the system, I noticed something remarkable that others have also documented: when obstacles are placed in the ant's path, it navigates around them and eventually returns to the highway pattern. As one researcher noted:
+While experimenting with perturbations to the system, I noticed something remarkable that others have also documented: when obstacles are placed in the ant's path, it navigates around them and eventually returns to the highway pattern. As one [researcher noted](https://github.com/dwmkerr/langtonsant):
+
+![image](https://github.com/user-attachments/assets/d956e77a-0e22-42a4-926f-dd85ae54ab7a)
 
 > "A spiral, weirdly resilient to traps, toggling tiles in the path of the ant has minor effects, but I have not been able to shake it off the spiral path, which is bizarre."
 
