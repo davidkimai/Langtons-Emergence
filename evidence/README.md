@@ -10,7 +10,7 @@ I'm sharing this evidence not as definitive proof but as an invitation for colla
 
 ## Directory Structure
 
-This evidence collection is organized by computational substrate:
+This evidence collection humbly strives to gather patterns across various computational substrate with proper uncertainty:
 
 ```
 /evidence
