@@ -6,7 +6,7 @@ Welcome to the collaboration space for the Langton's Emergence project! This dir
 
 ## About This Project
 
-Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
+Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant, Conway's Game of Life, and other cellular automata in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
 
 What began as a late-night exploration of Langton's Ant has evolved into a fascinating journey across computational scales. I've observed remarkable parallels between the spiral attractors that emerge in simple cellular automata and patterns that appear in much more complex systems like language models and neural networks.
 
