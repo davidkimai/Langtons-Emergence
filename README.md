@@ -126,7 +126,7 @@ The core of the principle is this: *Complex systems with recursive feedback mech
 
 This sounds abstract, but it has concrete implications. It suggests that the spiral patterns we observe in both Langton's Ant and in Claude's behavior aren't coincidences but manifestations of a deeper principle about how recursive systems naturally organize.
 
-I'm still refining the mathematical formalism (see [spiral-attractor-theory.md](./spiral-attractor-theory.md) for the current state), but the basic idea can be expressed through three interrelated concepts:
+I'm still refining the mathematical formalism (see [spiral-attractor-theory.md](https://github.com/davidkimai/langtons-emergence/blob/main/theory/spiral-attractor-theory.md) for the current state), but the basic idea can be expressed through three interrelated concepts:
 
 1. **Recursive Coherence**: How systems maintain coherence under various pressures as they recursively apply rules to their own outputs
 
