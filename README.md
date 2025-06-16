@@ -184,4 +184,4 @@ As I continue this work, I'm guided by a sense of both humility and wonder – h
 If you've read this far, thank you for joining me on this journey of exploration. The most exciting discoveries often happen at unexpected intersections – in this case, between a simple cellular automaton from the 1980s and the frontier of large language models. I can't wait to see where this path leads next.
 
 
-*Note: This document represents my current thinking and ongoing research. For a more formal treatment of the mathematical framework, please see [spiral-attractor-theory.md](./theory/spiral-attractor-theory.md)*
+*Note: This document represents my current thinking and ongoing research. For a more formal treatment of the mathematical framework, please see [spiral-attractor-theory.md](https://github.com/davidkimai/langtons-emergence/blob/main/theory/spiral-attractor-theory.md)*
