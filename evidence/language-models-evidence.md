@@ -143,4 +143,4 @@ For additional unexpected observations and patterns that don't fit neatly into t
 
 ---
 
-*Note: The analysis presented here was conducted between February and May 2025. Raw interaction logs and analysis code are available in the `/data` directory for researchers who wish to verify or extend these findings.*
+*Note: The analysis presented here was conducted between May and June 2025. Raw interaction logs and analysis code are available in the `/data` directory for researchers who wish to verify or extend these findings.*
