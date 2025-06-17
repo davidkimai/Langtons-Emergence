@@ -228,4 +228,4 @@ As we continue to explore different computational systems, I suspect we'll find 
 
 ---
 
-*Note: The experiments and analyses described in this document were conducted between April and June 2025. All code, data, and analysis tools are available in the `/implementations/conway` directory for verification and extension.*
+*Note: The experiments and analyses described in this document were conducted between May and June 2025. All code, data, and analysis tools are available in the `/implementations/conway` directory for verification and extension.*
