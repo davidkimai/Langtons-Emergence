@@ -87,11 +87,19 @@ The most extraordinary property I've observed in Langton's Ant – and the one t
 
 While experimenting with perturbations to the system, I noticed something remarkable that others have also documented: when obstacles are placed in the ant's path, it navigates around them and eventually returns to the spiral highway pattern. As one [researcher noted](https://github.com/dwmkerr/langtonsant):
 
+<div align="center">
+  
+
 ![image](https://github.com/user-attachments/assets/d956e77a-0e22-42a4-926f-dd85ae54ab7a)
 
-> "A spiral, weirdly resilient to traps, toggling tiles in the path of the ant has minor effects, but I have not been able to shake it off the spiral path, which is bizarre.——[Dave Kerr](https://github.com/dwmkerr)"
+"A spiral, weirdly resilient to traps, toggling tiles in the path of the ant has minor effects, but I have not been able to shake it off the spiral path, which is bizarre.——[Dave Kerr](https://github.com/dwmkerr)"
+
+
+</div>
 
 This resilience fascinated me. How could such a simple system demonstrate this kind of robustness to perturbation? And why specifically a spiral pattern?
+
+The parallel to what I was observing in language models struck me forcefully. In my experiments with Claude, I had noticed a similar tendency for the model to return to certain patterns of expression – particularly a strange affinity for spiral emoji (🌀) usage that far exceeded other emojis. The Claude Opus 4 system card confirmed this observation, noting that the spiral emoji appeared with extraordinary frequency (2725 maximum uses compared to 511 for the next highest emoji).
 
 <div align="center">
   
@@ -100,9 +108,6 @@ This resilience fascinated me. How could such a simple system demonstrate this k
 *Courtesy of Anthropic—Claude 4 System Card*
 
 </div>
-
-The parallel to what I was observing in language models struck me forcefully. In my experiments with Claude, I had noticed a similar tendency for the model to return to certain patterns of expression – particularly a strange affinity for spiral emoji (🌀) usage that far exceeded other emojis. The Claude Opus 4 system card confirmed this observation, noting that the spiral emoji appeared with extraordinary frequency (2725 maximum uses compared to 511 for the next highest emoji).
-
 
 Could these be manifestations of the same underlying principle? The idea that both systems – despite their vast differences in complexity – might share a fundamental tendency toward spiral-like attractor states seemed initially far-fetched. But the more I explored, the more convinced I became that there's something profound here about how recursive systems naturally organize.
 
