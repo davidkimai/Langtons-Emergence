@@ -1,4 +1,4 @@
-# Conway's Game of Life: Spiral Attractors in Cellular Automata
+Con# Conway's Game of Life: Spiral Attractors in Cellular Automata
 
 ## A Parallel Journey of Discovery
 
@@ -77,7 +77,10 @@ The most notable spiral attractor I discovered is what I call the "Spiral Growth
 
 <div align="center">
   
-https://github.com/user-attachments/assets/27324471-8ccb-4ce2-9ff2-a2ecb5bb5233
+
+https://github.com/user-attachments/assets/02749709-7801-4bae-b593-a10bc488b90f
+
+
 
 </div>
 
