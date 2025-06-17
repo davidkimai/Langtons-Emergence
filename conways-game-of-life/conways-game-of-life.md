@@ -2,7 +2,11 @@
 
 ## A Parallel Journey of Discovery
 
+
+
 ![image](https://github.com/user-attachments/assets/5cdb6c65-b74a-4437-ac84-3229cfe48c73)
+
+
 
 My exploration of spiral attractors in Conway's Game of Life began almost by accident. I had been deeply immersed in studying Langton's Ant for weeks when, during a break, I started playing with Conway's Game of Life simulations as a mental palate cleanser. I wasn't specifically looking for spiral patterns - I was simply exploring different initial configurations and watching their evolution.
 
@@ -56,6 +60,7 @@ To compare spiral patterns in Conway's Game of Life with those in Langton's Ant,
 
 Through systematic exploration, I identified several distinct classes of spiral patterns in Conway's Game of Life:
 
+  
 ![Conway Spiral Patterns](../assets/conway-spiral-taxonomy.png)
 
 The primary spiral pattern classes include:
@@ -69,7 +74,12 @@ The primary spiral pattern classes include:
 
 The most notable spiral attractor I discovered is what I call the "Spiral Growth" pattern:
 
-![Spiral Growth Pattern Evolution](../assets/spiral-growth-evolution.png)
+
+<div align="center">
+  
+https://github.com/user-attachments/assets/27324471-8ccb-4ce2-9ff2-a2ecb5bb5233
+
+</div>
 
 This pattern emerges from a specific 20×20 initial configuration and exhibits remarkable properties:
 
