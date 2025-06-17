@@ -10,7 +10,7 @@ This paper traces the evolution of that thinking—from studying emergence in La
 
 ## The Unexpected Bridge
 
-The connection between Langton's Ant and collaborative AI might seem tenuous at first glance. What could a simple cellular automaton possibly tell us about working with sophisticated language models? But as I've documented in [langtons-emergence.md (README.md)](./README.md) and [langtons-benchmark.md](./langtons-benchmark.md), there are profound principles of emergence that appear to operate across computational scales—from the simplest cellular automata to frontier AI systems.
+The connection between Langton's Ant and collaborative AI might seem tenuous at first glance. What could a simple cellular automaton possibly tell us about working with sophisticated language models? But as I've documented in [langtons-emergence.md (README.md)](./README.md) and [langtons-benchmark.md](./benchmark/langtons-benchmark.md), there are profound principles of emergence that appear to operate across computational scales—from the simplest cellular automata to frontier AI systems.
 
 Three insights in particular have transformed my thinking about human-AI collaboration:
 
