@@ -4,8 +4,12 @@
 Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
 
 <div align="center">
+
     
+![image](https://github.com/user-attachments/assets/559ecedb-a90a-40b6-a937-68b3adee87b2)
+
 ![image](https://github.com/user-attachments/assets/beca971d-67df-4904-b11b-697e3d6c6da8)
+
 
 *Four ants and six rules after 129,000 iterations*
 
@@ -88,8 +92,14 @@ The first time I left a simulation running overnight and returned to find the an
 
 This phase transition is what convinced me that Langton's Ant might offer insights into how capabilities emerge in neural networks. The highway pattern wasn't explicitly programmed – it emerged from the recursive application of simple rules, just as capabilities like reasoning seem to emerge in large language models without explicit programming.
 
-
 ## 3. The Resilient Spiral: An Unexpected Discovery
+
+<div align="center">
+
+
+
+</div>
+
 
 The most extraordinary property I've observed in Langton's Ant – and the one that most directly connects to my research on language models – is what I've come to call "the resilient spiral" – a unique spiral attractor state found in both systems emergent outputs.
 
