@@ -78,8 +78,7 @@ The most notable spiral attractor I discovered is what I call the "Spiral Growth
 <div align="center">
   
 
-https://github.com/user-attachments/assets/02749709-7801-4bae-b593-a10bc488b90f
-
+https://github.com/user-attachments/assets/5abb108e-4ff9-4e7d-ae1e-0834092b69c1
 
 
 </div>
