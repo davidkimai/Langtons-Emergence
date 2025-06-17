@@ -874,3 +874,713 @@ class ResidueAnalyzer:
                                   width=2, edge_color='red', ax=ax)
             nx.draw_networkx_edges(G, pos, edgelist=similarity_edges, 
                                   width=1, edge_color='blue', alpha=0.5, ax=ax)
+            
+            # Draw labels for important nodes
+            # Only label nodes with high priority or high degree
+            important_nodes = [n for n in G.nodes 
+                              if G.nodes[n]['priority'] == 'high' or G.degree(n) > 2]
+            
+            label_dict = {n: G.nodes[n]['title'] for n in important_nodes}
+            nx.draw_networkx_labels(G, pos, labels=label_dict, font_size=8, 
+                                   font_weight='bold', ax=ax)
+            
+            # Add legend for systems
+            handles = []
+            for system, color in system_color_map.items():
+                patch = plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=color, 
+                                  markersize=10, label=system)
+                handles.append(patch)
+            
+            # Add legend for priority sizes
+            for priority, size in priority_sizes.items():
+                patch = plt.Line2D([0], [0], marker='o', color='gray', 
+                                  markersize=np.sqrt(size/30), 
+                                  label=f"{priority.capitalize()} Priority")
+                handles.append(patch)
+            
+            # Add legend for edge types
+            handles.append(plt.Line2D([0], [0], color='red', lw=2, label='Explicit Parallel'))
+            handles.append(plt.Line2D([0], [0], color='blue', lw=1, alpha=0.5, 
+                                     label='Similarity Link'))
+            
+            ax.legend(handles=handles, loc='upper right', title='Legend')
+            
+            # Set title and remove axis
+            ax.set_title('Symbolic Residue Network', fontsize=16)
+            ax.axis('off')
+            
+            # Adjust layout
+            plt.tight_layout()
+            
+            # Save if requested
+            if save_path:
+                plt.savefig(save_path, dpi=300, bbox_inches='tight')
+            
+            return fig
+        
+        except ImportError:
+            logger.warning("NetworkX or sklearn not available for visualization")
+            
+            # Create empty figure with message
+            fig, ax = plt.subplots(figsize=figsize)
+            ax.text(0.5, 0.5, "NetworkX or sklearn not available for visualization", 
+                   ha='center', va='center', fontsize=14)
+            ax.axis('off')
+            
+            return fig
+    
+    def visualize_temporal_evolution(self, figsize: Tuple[int, int] = (12, 8),
+                                    save_path: Optional[str] = None) -> plt.Figure:
+        """
+        Visualize temporal evolution of residue observations.
+        
+        Parameters:
+        -----------
+        figsize : Tuple[int, int], default=(12, 8)
+            Figure size
+        save_path : str, optional
+            Path to save the visualization
+        
+        Returns:
+        --------
+        plt.Figure
+            Figure containing the visualization
+        """
+        # Extract timestamps and systems
+        data = []
+        for residue in self.repository.residues:
+            try:
+                dt = datetime.datetime.fromisoformat(residue.timestamp)
+                data.append({
+                    'id': residue.id,
+                    'timestamp': dt,
+                    'system': residue.system_context,
+                    'priority': residue.priority,
+                    'status': residue.status,
+                    'title': residue.title
+                })
+            except:
+                continue
+        
+        # Sort by timestamp
+        data.sort(key=lambda x: x['timestamp'])
+        
+        if not data:
+            # Create empty figure with message
+            fig, ax = plt.subplots(figsize=figsize)
+            ax.text(0.5, 0.5, "No timestamped residues available", 
+                   ha='center', va='center', fontsize=14)
+            ax.axis('off')
+            
+            return fig
+        
+        # Create figure
+        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=figsize, 
+                                      gridspec_kw={'height_ratios': [3, 1]})
+        
+        # Get unique systems and priorities
+        systems = sorted(set(d['system'] for d in data))
+        priorities = ['high', 'medium', 'low']
+        
+        # Create system and priority color maps
+        system_colors = plt.cm.tab10(np.linspace(0, 1, len(systems)))
+        system_color_map = dict(zip(systems, system_colors))
+        
+        priority_colors = {'high': 'red', 'medium': 'blue', 'low': 'green'}
+        
+        # Create timeline
+        for i, d in enumerate(data):
+            # Add system point
+            ax1.scatter(d['timestamp'], i, 
+                       c=[system_color_map[d['system']]], 
+                       s=100, alpha=0.7, 
+                       edgecolors='black', linewidths=1)
+            
+            # Add priority marker
+            marker = 'o' if d['priority'] == 'medium' else ('*' if d['priority'] == 'high' else 's')
+            ax1.scatter(d['timestamp'], i, 
+                       c=priority_colors[d['priority']], 
+                       s=150, alpha=0.5, marker=marker)
+        
+        # Add labels
+        ax1.set_yticks(range(len(data)))
+        ax1.set_yticklabels([f"{d['id']}: {d['title'][:20]}..." for d in data])
+        
+        ax1.set_title('Symbolic Residue Timeline', fontsize=16)
+        ax1.grid(True, alpha=0.3)
+        
+        # Create histogram of observations over time
+        timestamps = [d['timestamp'] for d in data]
+        min_time = min(timestamps)
+        max_time = max(timestamps)
+        
+        # Determine bin width based on time range
+        time_range = (max_time - min_time).total_seconds()
+        if time_range < 86400:  # Less than a day
+            bin_width = datetime.timedelta(hours=1)
+            date_format = '%H:%M'
+        elif time_range < 604800:  # Less than a week
+            bin_width = datetime.timedelta(days=1)
+            date_format = '%m-%d'
+        elif time_range < 2592000:  # Less than a month
+            bin_width = datetime.timedelta(weeks=1)
+            date_format = '%m-%d'
+        else:
+            bin_width = datetime.timedelta(days=30)
+            date_format = '%Y-%m'
+        
+        # Create bins
+        bin_count = int(time_range / bin_width.total_seconds()) + 1
+        bins = [min_time + bin_width * i for i in range(bin_count + 1)]
+        
+        # Count observations per bin
+        counts = np.zeros(bin_count)
+        for dt in timestamps:
+            bin_idx = int((dt - min_time).total_seconds() / bin_width.total_seconds())
+            if 0 <= bin_idx < bin_count:
+                counts[bin_idx] += 1
+        
+        # Plot histogram
+        bin_centers = [min_time + bin_width * (i + 0.5) for i in range(bin_count)]
+        ax2.bar(bin_centers, counts, width=bin_width.total_seconds() * 0.8, 
+               alpha=0.7, color='skyblue', edgecolor='black')
+        
+        ax2.set_xlabel('Time')
+        ax2.set_ylabel('Count')
+        ax2.set_title('Observation Frequency')
+        ax2.grid(True, alpha=0.3)
+        
+        # Format dates
+        import matplotlib.dates as mdates
+        date_format = mdates.DateFormatter(date_format)
+        ax1.xaxis.set_major_formatter(date_format)
+        ax2.xaxis.set_major_formatter(date_format)
+        
+        plt.xticks(rotation=45)
+        
+        # Add legends
+        # System legend
+        system_handles = []
+        for system, color in system_color_map.items():
+            patch = plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=color, 
+                              markersize=10, label=system)
+            system_handles.append(patch)
+        
+        # Priority legend
+        priority_handles = []
+        for priority in priorities:
+            marker = 'o' if priority == 'medium' else ('*' if priority == 'high' else 's')
+            patch = plt.Line2D([0], [0], marker=marker, color=priority_colors[priority], 
+                              markersize=10, label=f"{priority.capitalize()} Priority")
+            priority_handles.append(patch)
+        
+        # Add legends
+        ax1.legend(handles=system_handles, loc='upper left', 
+                  title='Systems', bbox_to_anchor=(1.01, 1))
+        ax1.legend(handles=priority_handles, loc='upper left', 
+                  title='Priorities', bbox_to_anchor=(1.01, 0.5))
+        
+        # Adjust layout
+        plt.tight_layout()
+        
+        # Save if requested
+        if save_path:
+            plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        
+        return fig
+    
+    def visualize_status_transitions(self, residue_id: str = None,
+                                   figsize: Tuple[int, int] = (10, 6),
+                                   save_path: Optional[str] = None) -> plt.Figure:
+        """
+        Visualize status transitions of residues.
+        
+        Parameters:
+        -----------
+        residue_id : str, optional
+            ID of specific residue to visualize, or None for all
+        figsize : Tuple[int, int], default=(10, 6)
+            Figure size
+        save_path : str, optional
+            Path to save the visualization
+        
+        Returns:
+        --------
+        plt.Figure
+            Figure containing the visualization
+        """
+        # Get residues to analyze
+        if residue_id:
+            residues = [self.repository.get(residue_id)]
+            if not residues[0]:
+                # Create empty figure with message
+                fig, ax = plt.subplots(figsize=figsize)
+                ax.text(0.5, 0.5, f"Residue not found: {residue_id}", 
+                       ha='center', va='center', fontsize=14)
+                ax.axis('off')
+                
+                return fig
+        else:
+            residues = self.repository.residues
+        
+        # Analyze residue evolution
+        evolutions = []
+        for residue in residues:
+            evol = self.analyze_residue_evolution(residue.id)
+            if 'error' not in evol:
+                evolutions.append(evol)
+        
+        if not evolutions:
+            # Create empty figure with message
+            fig, ax = plt.subplots(figsize=figsize)
+            ax.text(0.5, 0.5, "No residue evolution data available", 
+                   ha='center', va='center', fontsize=14)
+            ax.axis('off')
+            
+            return fig
+        
+        # Create figure
+        fig, ax = plt.subplots(figsize=figsize)
+        
+        # Set up Sankey diagram
+        try:
+            from matplotlib.sankey import Sankey
+            
+            # Count status transitions
+            transitions = {}
+            statuses = set()
+            
+            for evol in evolutions:
+                if 'status_evolution' in evol and len(evol['status_evolution']) >= 2:
+                    # Get status sequence
+                    sequence = [s['status'] for s in evol['status_evolution']]
+                    statuses.update(sequence)
+                    
+                    # Count transitions
+                    for i in range(len(sequence) - 1):
+                        source = sequence[i]
+                        target = sequence[i + 1]
+                        
+                        if source != target:
+                            key = (source, target)
+                            if key not in transitions:
+                                transitions[key] = 0
+                            transitions[key] += 1
+            
+            # Skip if no transitions
+            if not transitions:
+                ax.text(0.5, 0.5, "No status transitions found", 
+                       ha='center', va='center', fontsize=14)
+                ax.axis('off')
+                
+                return fig
+            
+            # Create status index mapping
+            statuses = sorted(statuses)
+            status_indices = {status: i for i, status in enumerate(statuses)}
+            
+            # Prepare Sankey data
+            flows = []
+            labels = []
+            for (source, target), count in transitions.items():
+                flows.append(count)
+                labels.append(f"{source} → {target}")
+            
+            # Create Sankey diagram
+            sankey = Sankey(ax=ax, scale=0.01, offset=0.2, head_angle=120, 
+                           format='%.0f', unit='', gap=0.5)
+            
+            # Add flows
+            for i, ((source, target), count) in enumerate(transitions.items()):
+                sankey.add(flows=[count], 
+                          orientations=[0], 
+                          labels=[f"{source} → {target}"],
+                          pathlengths=[0.5])
+            
+            # Finish diagram
+            sankey.finish()
+            
+            ax.set_title('Residue Status Transitions', fontsize=16)
+            ax.axis('off')
+            
+        except ImportError:
+            # Alternative visualization if Sankey not available
+            logger.warning("Matplotlib Sankey not available, using alternative visualization")
+            
+            # Get all statuses and count residues in each
+            status_counts = {}
+            for residue in residues:
+                status = residue.status
+                if status not in status_counts:
+                    status_counts[status] = 0
+                status_counts[status] += 1
+            
+            # Create bar chart
+            statuses = list(status_counts.keys())
+            counts = [status_counts[s] for s in statuses]
+            
+            ax.bar(statuses, counts, color='skyblue', edgecolor='black')
+            
+            ax.set_title('Residue Status Distribution', fontsize=16)
+            ax.set_xlabel('Status')
+            ax.set_ylabel('Count')
+            
+            # Rotate x labels if needed
+            if len(statuses) > 3:
+                plt.xticks(rotation=45, ha='right')
+            
+            ax.grid(True, alpha=0.3)
+        
+        # Adjust layout
+        plt.tight_layout()
+        
+        # Save if requested
+        if save_path:
+            plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        
+        return fig
+
+def create_residue_from_template(template_path: str = None, **kwargs) -> SymbolicResidue:
+    """
+    Create a symbolic residue from template.
+    
+    Parameters:
+    -----------
+    template_path : str, optional
+        Path to template JSON file
+    **kwargs
+        Fields to override template values
+    
+    Returns:
+    --------
+    SymbolicResidue
+        Created residue
+    """
+    # Default template
+    template = {
+        "observer": "researcher",
+        "system_context": "",
+        "title": "",
+        "observation": "",
+        "context": {},
+        "repeatability": "unknown",
+        "documentation": [],
+        "initial_hypotheses": [],
+        "relationship_to_known": "",
+        "cross_system_parallels": [],
+        "potential_significance": "",
+        "status": "documented",
+        "investigation_steps": [],
+        "open_questions": [],
+        "next_steps": [],
+        "priority": "medium",
+        "recursive_nature": "",
+        "meta_implications": "",
+        "researcher_effect": "",
+        "personal_reflection": "",
+        "tags": []
+    }
+    
+    # Load template if provided
+    if template_path:
+        try:
+            with open(template_path, 'r') as f:
+                loaded_template = json.load(f)
+                template.update(loaded_template)
+        except Exception as e:
+            logger.warning(f"Failed to load template: {e}")
+    
+    # Override with kwargs
+    template.update(kwargs)
+    
+    # Create residue
+    return SymbolicResidue(**template)
+
+def detect_anomalies(data: np.ndarray, threshold_factor: float = 3.0) -> List[int]:
+    """
+    Detect anomalies in data.
+    
+    Parameters:
+    -----------
+    data : np.ndarray
+        Data to analyze
+    threshold_factor : float, default=3.0
+        Factor for threshold calculation
+    
+    Returns:
+    --------
+    List[int]
+        Indices of anomalies
+    """
+    if len(data) < 2:
+        return []
+    
+    # Calculate z-scores
+    mean = np.mean(data)
+    std = np.std(data)
+    
+    if std == 0:
+        return []
+    
+    z_scores = np.abs((data - mean) / std)
+    
+    # Detect anomalies
+    anomalies = np.where(z_scores > threshold_factor)[0]
+    
+    return list(anomalies)
+
+def detect_phase_transitions(data: np.ndarray, window_size: int = 5) -> List[int]:
+    """
+    Detect phase transitions in data.
+    
+    Parameters:
+    -----------
+    data : np.ndarray
+        Data to analyze
+    window_size : int, default=5
+        Size of sliding window
+    
+    Returns:
+    --------
+    List[int]
+        Indices of phase transitions
+    """
+    if len(data) < window_size * 2:
+        return []
+    
+    # Calculate moving average
+    window = np.ones(window_size) / window_size
+    moving_avg = np.convolve(data, window, mode='valid')
+    
+    # Calculate derivatives
+    derivatives = np.diff(moving_avg)
+    
+    # Calculate standard deviation of derivatives
+    std_dev = np.std(derivatives)
+    
+    if std_dev == 0:
+        return []
+    
+    # Find significant changes
+    transitions = []
+    for i in range(1, len(derivatives)):
+        if abs(derivatives[i] - derivatives[i-1]) > 2 * std_dev:
+            # Adjust index to original data
+            transitions.append(i + window_size)
+    
+    return transitions
+
+def analyze_system(data: Dict[str, np.ndarray], timestamps: List[datetime.datetime] = None) -> Dict[str, Any]:
+    """
+    Analyze system data for patterns and anomalies.
+    
+    Parameters:
+    -----------
+    data : Dict[str, np.ndarray]
+        System data (metric -> values)
+    timestamps : List[datetime.datetime], optional
+        Timestamps for data points
+    
+    Returns:
+    --------
+    Dict[str, Any]
+        Analysis results
+    """
+    results = {
+        'anomalies': {},
+        'transitions': {},
+        'correlations': {},
+        'cycles': {}
+    }
+    
+    # Analyze each metric
+    for metric, values in data.items():
+        # Skip if not enough data
+        if len(values) < 5:
+            continue
+        
+        # Detect anomalies
+        anomalies = detect_anomalies(values)
+        if anomalies:
+            results['anomalies'][metric] = anomalies
+        
+        # Detect phase transitions
+        transitions = detect_phase_transitions(values)
+        if transitions:
+            results['transitions'][metric] = transitions
+        
+        # Detect cycles
+        if len(values) >= 10:
+            from scipy import signal
+            
+            # Normalize values
+            normalized = values - np.mean(values)
+            if np.std(normalized) > 0:
+                normalized = normalized / np.std(normalized)
+                
+                # Calculate autocorrelation
+                autocorr = signal.correlate(normalized, normalized, mode='full')
+                autocorr = autocorr[len(autocorr)//2:]
+                
+                # Find peaks
+                peaks, _ = signal.find_peaks(autocorr, height=0.3)
+                
+                if len(peaks) > 1:
+                    # Calculate cycle period
+                    if peaks[0] == 0:
+                        peaks = peaks[1:]
+                    
+                    period = np.mean(np.diff(peaks))
+                    
+                    if period > 1:
+                        results['cycles'][metric] = {
+                            'period': period,
+                            'strength': autocorr[int(period)] / autocorr[0]
+                        }
+    
+    # Calculate correlations between metrics
+    metrics = list(data.keys())
+    if len(metrics) >= 2:
+        for i in range(len(metrics)):
+            for j in range(i + 1, len(metrics)):
+                metric1 = metrics[i]
+                metric2 = metrics[j]
+                
+                values1 = data[metric1]
+                values2 = data[metric2]
+                
+                # Ensure same length
+                min_len = min(len(values1), len(values2))
+                if min_len >= 5:
+                    values1 = values1[:min_len]
+                    values2 = values2[:min_len]
+                    
+                    # Calculate correlation
+                    corr, p_value = stats.pearsonr(values1, values2)
+                    
+                    if abs(corr) > 0.5 and p_value < 0.05:
+                        results['correlations'][(metric1, metric2)] = {
+                            'correlation': corr,
+                            'p_value': p_value
+                        }
+    
+    # Analyze temporal patterns if timestamps provided
+    if timestamps and len(timestamps) == len(next(iter(data.values()))):
+        results['temporal'] = _analyze_temporal_patterns(data, timestamps)
+    
+    return results
+
+def _analyze_temporal_patterns(data: Dict[str, np.ndarray], timestamps: List[datetime.datetime]) -> Dict[str, Any]:
+    """
+    Analyze temporal patterns in data.
+    
+    Parameters:
+    -----------
+    data : Dict[str, np.ndarray]
+        System data (metric -> values)
+    timestamps : List[datetime.datetime]
+        Timestamps for data points
+    
+    Returns:
+    --------
+    Dict[str, Any]
+        Temporal analysis results
+    """
+    results = {
+        'trends': {},
+        'seasonality': {},
+        'temporal_transitions': {}
+    }
+    
+    # Convert timestamps to seconds since start
+    start_time = min(timestamps)
+    time_seconds = [(dt - start_time).total_seconds() for dt in timestamps]
+    
+    # Analyze each metric
+    for metric, values in data.items():
+        # Skip if not enough data
+        if len(values) < 10:
+            continue
+        
+        # Detect trend
+        trend, intercept, r_value, p_value, std_err = stats.linregress(time_seconds, values)
+        
+        if p_value < 0.05:
+            results['trends'][metric] = {
+                'slope': trend,
+                'intercept': intercept,
+                'r_squared': r_value**2,
+                'p_value': p_value
+            }
+        
+        # Detect seasonal patterns
+        # This is a simplified approach; for more complex seasonality detection,
+        # consider using seasonal decomposition (e.g., from statsmodels)
+        try:
+            # Check for daily pattern
+            day_seconds = 86400
+            if max(time_seconds) >= day_seconds:
+                # Convert to time of day
+                day_time = [t % day_seconds for t in time_seconds]
+                
+                # Group by time of day (hourly bins)
+                bins = 24
+                hourly_values = [[] for _ in range(bins)]
+                
+                for i, t in enumerate(day_time):
+                    bin_idx = int(t / (day_seconds / bins))
+                    if bin_idx < bins:
+                        hourly_values[bin_idx].append(values[i])
+                
+                # Calculate mean for each hour
+                hourly_means = [np.mean(v) if v else 0 for v in hourly_values]
+                
+                # Check variation in hourly means
+                if np.std(hourly_means) > 0.1 * np.mean(hourly_means):
+                    # Significant hourly variation
+                    results['seasonality'][metric] = {
+                        'pattern': 'daily',
+                        'variation': np.std(hourly_means) / np.mean(hourly_means)
+                    }
+        except:
+            pass
+        
+        # Detect temporal transitions
+        transitions = detect_phase_transitions(values)
+        if transitions:
+            results['temporal_transitions'][metric] = [
+                {
+                    'index': idx,
+                    'timestamp': timestamps[idx] if idx < len(timestamps) else None
+                }
+                for idx in transitions if idx < len(values)
+            ]
+    
+    return results
+
+# Example usage if run directly
+if __name__ == "__main__":
+    # Create repository
+    repo = ResidueRepository("./residue")
+    
+    # Create sample residue
+    residue = create_residue_from_template(
+        observer="David Kimai",
+        system_context="Langton's Ant",
+        title="Transient Spiral Echoes",
+        observation="Brief appearances of spiral-like structures before dissolving",
+        potential_significance="May indicate temporary attractor states",
+        priority="high"
+    )
+    
+    # Add to repository
+    repo.add(residue)
+    
+    # Create analyzer
+    analyzer = ResidueAnalyzer(repo)
+    
+    # Generate report
+    report = analyzer.generate_report()
+    
+    # Print report
+    print(json.dumps(report, indent=2, default=str))
