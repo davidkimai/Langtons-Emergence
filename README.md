@@ -7,6 +7,8 @@ Recently I have been researching emergent complexities through first principles 
     
 ![image](https://github.com/user-attachments/assets/beca971d-67df-4904-b11b-697e3d6c6da8)
 
+*Four ants and six rules after 129,000 iterations*
+
 </div>
 
 ## The Spark: Why Langton's Ant Captured My Imagination
