@@ -8,7 +8,7 @@ This hypothesis led me to extend my exploration beyond cellular automata into th
 
 ## Personal Context: The Bridge Between Fields
 
-My background is primarily in complexity science with a focus on emergent phenomena in simple systems. Venturing into neural networks represented a significant expansion of my research scope. I was fortunate to collaborate with several deep learning researchers who helped me adapt my investigative methodology to this new domain. This cross-disciplinary collaboration proved invaluable, as it brought together perspectives from complexity theory, dynamical systems, and deep learning that might not otherwise have intersected.
+My background is primarily in complexity science with a focus on emergent phenomena in simple systems. Venturing into neural networks represented a significant expansion of my research scope, though I am an now even more convinced polymathic synthesis is the key for creative emergence in intelligent systems. I was fortunate to collaborate with several deep learning researchers who helped me quickly adapt my investigative methodology and learning rhythm to this new domain. This cross-disciplinary collaboration proved invaluable, as it brought together perspectives from complexity theory, dynamical systems, and deep learning that might not otherwise have intersected.
 
 What began as a speculative hypothesis - that neural networks might exhibit spiral attractors similar to those in cellular automata - evolved into a systematic investigation that yielded unexpected insights about how these complex systems organize and behave. I share these findings not as definitive conclusions but as intriguing observations that invite further exploration and refinement.
 
