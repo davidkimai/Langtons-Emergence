@@ -39,6 +39,7 @@ We invite diverse perspectives and acknowledge that the most valuable insights o
 - `recursive_research_protocol.md`: Detailed protocol for maintaining research continuity across sessions
 - `symbolic_residue_documentation_template.md`: Template for documenting unexpected patterns and phenomena
 - `attractor_cartography_guide.md`: Guidelines for mapping and comparing attractor patterns across systems
+- `towards-collaborative-ai.md`: How studying primitives of emergence reshapes our approach to human-AI collaboration.
 
 ## Getting Involved
 
