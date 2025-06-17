@@ -3,13 +3,16 @@
 
 Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
 
+
 <div align="center">
 
-    
+
 ![image](https://github.com/user-attachments/assets/559ecedb-a90a-40b6-a937-68b3adee87b2)
 
-![image](https://github.com/user-attachments/assets/beca971d-67df-4904-b11b-697e3d6c6da8)
+*Example of spiral growth in colored Langton's ants*
 
+
+![image](https://github.com/user-attachments/assets/beca971d-67df-4904-b11b-697e3d6c6da8)
 
 *Four ants and six rules after 129,000 iterations*
 
