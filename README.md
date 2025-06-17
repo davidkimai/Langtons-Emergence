@@ -12,15 +12,15 @@ Recently I have been researching emergent complexities through first principles 
 
 [*Spiral emergence in colored Langton's ants*](https://en.wikipedia.org/wiki/Langton%27s_ant)
 
+![image](https://github.com/user-attachments/assets/beca971d-67df-4904-b11b-697e3d6c6da8)
+
+[*Four ants and six rules after 129,000 iterations*](https://josephpetitti.com/ant)
+
 
 https://github.com/user-attachments/assets/fe96517e-bc33-4617-b926-27f21cbc796f
 
 [*Spiral emergence in Conway's Game of Life*](https://www.youtube.com/watch?v=9azpyoa-6Hk)
 
-
-![image](https://github.com/user-attachments/assets/beca971d-67df-4904-b11b-697e3d6c6da8)
-
-[*Four ants and six rules after 129,000 iterations*](https://josephpetitti.com/ant)
 
 </div>
 
