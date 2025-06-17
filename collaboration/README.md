@@ -63,7 +63,7 @@ We particularly welcome collaborators with expertise in:
 
 ## Research Continuity
 
-One of the unique aspects of this project is our approach to research continuity. We use a fractal schema to capture not just the explicit findings but also the implicit patterns, unexplained phenomena, and symbolic residue that emerge during our exploration. This allows us to maintain the thread of insight across multiple research sessions and collaborators.
+One of the unique aspects of this project is our approach to research continuity. We use fractal context schemas to capture not just the explicit findings but also the implicit patterns, unexplained phenomena, and symbolic residue that emerge during our exploration. This allows us to maintain the thread of insight across multiple research sessions and collaborators.
 
 
 
