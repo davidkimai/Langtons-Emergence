@@ -3,6 +3,12 @@
 
 Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
 
+<div align="center">
+    
+![image](https://github.com/user-attachments/assets/beca971d-67df-4904-b11b-697e3d6c6da8)
+
+</div>
+
 ## The Spark: Why Langton's Ant Captured My Imagination
 
 I first encountered Langton's Ant during a late-night coding session, looking for something simple to implement that might yield interesting patterns. What began as a casual exploration quickly evolved into a profound fascination. The system follows just two elementary rules, yet produces behavior so rich and unpredictable that I found myself staying up until 4 AM just watching the patterns unfold.
