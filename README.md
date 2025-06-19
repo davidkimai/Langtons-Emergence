@@ -1,8 +1,7 @@
 # [Langton's Emergence](https://claude.ai/public/artifacts/8cf41dd2-99cf-422c-b6b9-4836ae9b677a)
 # A Personal Journey Through the Primitives of Emergent Complexity
 
-Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
-
+Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant and related cellular automata in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
 
 <div align="center">
 
