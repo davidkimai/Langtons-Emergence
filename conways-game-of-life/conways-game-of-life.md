@@ -1,4 +1,4 @@
-Con# Conway's Game of Life: Spiral Attractors in Cellular Automata
+# Conway's Game of Life: Spiral Attractors in Cellular Automata
 
 ## A Parallel Journey of Discovery
 
