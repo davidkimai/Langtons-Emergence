@@ -1,1 +1,1 @@
-# Inspired by Anthropic's MCP, Context Schemas Empower Cross Session Research Continuity. 
+# Inspired by Anthropic's Model Context Protocol, Context Schemas Empower Cross Session Continuity 
