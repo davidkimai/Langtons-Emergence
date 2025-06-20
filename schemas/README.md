@@ -1,4 +1,4 @@
-# Inspired by Anthropic's Model Context Protocol
+# Inspired by Anthropic's Model Context Protocol & Video Game Checkpoints
 
 # Context Schemas Empower Cross Model Collaboration and Cross Session Continuity Through Structure
 
