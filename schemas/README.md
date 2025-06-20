@@ -1,6 +1,6 @@
 # Inspired by Anthropic's Model Context Protocol
 
-# Context Schemas Empower Cross Model and Cross Session Continuity Through Structure
+# Context Schemas Empower Cross Model Collaboration and Cross Session Continuity Through Structure
 
 # Schema 1 (6/16/2025)
 
