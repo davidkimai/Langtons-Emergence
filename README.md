@@ -1,6 +1,8 @@
 # [Langton's Emergence](https://claude.ai/public/artifacts/8cf41dd2-99cf-422c-b6b9-4836ae9b677a)
 # A Personal Journey Through the Primitives of Emergent Complexity
 
+ **[On Emergence, Attractors, and Dynamical Systems Theory](https://content.csbs.utah.edu/~butner/systems/DynamicalSystemsIntro.html) | [Columbia DST](http://wordpress.ei.columbia.edu/ac4/about/our-approach/dynamical-systems-theory/)**
+ 
 Recently I have been researching emergent complexities through first principles reductionism of Langton's Ant and related cellular automata in the hopes that they could potentially offer insights into the emergent intricacies of frontier large language models.
 
 <div align="center">
